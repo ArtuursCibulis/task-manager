@@ -1,0 +1,8 @@
+- if user_signed_in?
+  .actionbar
+    .container-fluid
+      .btn-toolbar.actions
+        .btn-group
+          = yield :actions
+      ol.breadcrumb
+        = yield :navicrumbs
