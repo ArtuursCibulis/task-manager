@@ -1,0 +1,7 @@
+.flash-messages
+  - bootstrap_mapping = { 'notice' => :success, 'alert' => :danger }
+  - flash.each do |key, value|
+    - if ['notice', 'alert'].include?(key) && value.present?
+      div( class="alert alert-#{bootstrap_mapping[key]} alert-dismissible fade show" role='alert' )
+        = value
+        button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
