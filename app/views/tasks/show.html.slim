@@ -1,0 +1,18 @@
+- provide :navicrumbs do
+  li.breadcrumb-item = link_to 'Tasks', root_path
+  li.breadcrumb-item.active = @task.title
+
+- provide :actions do
+  = link_to 'Delete', task_path(@task), class: 'btn btn-danger float-end', data: { turbo_confirm: 'Do you really want to delete?', turbo_method: :delete }
+  = link_to 'Edit', edit_task_path(@task), class: 'btn btn-primary float-end'
+
+.mt-3.ms-5
+  h1 Task details
+
+  = show_for @task do |a|
+    = a.attribute :title
+    = a.attribute :description
+    = a.attribute :due_date
+    = a.attribute :status
+    = a.association :creator, using: :email
+    = a.association :assignee, using: :email

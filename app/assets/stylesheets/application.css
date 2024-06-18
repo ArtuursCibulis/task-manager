@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+.form {
+  margin-left: 500px;
+  margin-right: 500px;
+}
+
+.actionbar {
+  background-color: lightgray;
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid gray;
+
+  .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  ol.breadcrumb {
+    order: 0;
+    background-color: inherit;
+    padding-top: 0.5rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  .btn-toolbar.actions {
+    order: 2;
+    margin: 3px 0;
+  }
+}

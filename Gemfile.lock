@@ -199,6 +199,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    show_for (0.8.1)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -257,6 +260,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   sassc-rails
   selenium-webdriver
+  show_for
   slim
   sprockets-rails
   sqlite3 (~> 1.4)

@@ -1,0 +1,6 @@
+- provide :navicrumbs do
+  li.breadcrumb-item = link_to 'Tasks', root_path
+  li.breadcrumb-item = link_to @task.title, task_path(@task)
+  li.breadcrumb-item.active = 'Edit'
+
+= render 'form'

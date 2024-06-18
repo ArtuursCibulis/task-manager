@@ -1,1 +1,15 @@
-= 'Hello'
+- provide :actions do
+  = link_to 'Create task', new_task_path, class: 'btn btn-primary'
+
+.container-fluid
+  table.table.table-hover.mt-2
+    thead
+      th = 'Title'
+      th = 'Due date'
+      th = 'Status'
+    tbody
+      - @tasks.each do |task|
+        tr
+          td = link_to task.title, task_path(task)
+          td = task.due_date
+          td = task.status
