@@ -38,6 +38,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def assigned
+    @tasks = current_user.assigned_tasks
+  end
+
   private
 
   def find_task

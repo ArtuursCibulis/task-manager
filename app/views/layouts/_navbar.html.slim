@@ -5,5 +5,5 @@ nav.navbar.bg-body-tertiary
       .dropdown
         .dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false") #{current_user.email}
         ul.dropdown-menu
-          li
-            = link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
+          li = link_to 'Assigned tasks', assigned_tasks_path, class: 'dropdown-item'
+          li = link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
