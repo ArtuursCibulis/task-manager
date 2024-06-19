@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :destroy, :edit, :update]
 
   def index
-    @tasks = current_user.created_tasks
+    @tasks = Task.where(creator: current_user, assignee: nil, assigner: nil).or(Task.where(assignee: current_user))
   end
 
   def new
@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params.merge(creator: current_user, assignee: current_user))
+    task = Task.new(task_params.merge(creator: current_user))
 
     if task.save
       redirect_to task, notice: 'Task created'
@@ -45,6 +45,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date, :status, :creator_id, :assignee_id)
+    params.require(:task).permit(:title, :description, :due_date, :status, :creator_id, :assignee_id, :assigner_id)
   end
 end

@@ -5,6 +5,7 @@
 - provide :actions do
   = link_to 'Delete', task_path(@task), class: 'btn btn-danger float-end', data: { turbo_confirm: 'Do you really want to delete?', turbo_method: :delete }
   = link_to 'Edit', edit_task_path(@task), class: 'btn btn-primary float-end'
+  .btn.btn-secondary.float-end(data-bs-toggle='modal' data-bs-target='#assignModal') = 'Assign'
 
 .mt-3.ms-5
   h1 Task details
@@ -16,3 +17,6 @@
     = a.attribute :status
     = a.association :creator, using: :email
     = a.association :assignee, using: :email
+    = a.association :assigner, using: :email
+
+= render 'assign_modal'

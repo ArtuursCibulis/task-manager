@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :created_tasks, class_name: 'Task', foreign_key: :creator_id
-  has_many :assigned_tasks, class_name: 'Task', foreign_key: :assignee_id
+  has_many :assigned_tasks, class_name: 'Task', foreign_key: :assigner_id
 
   validates_uniqueness_of :email
+  validates_presence_of :email
 end

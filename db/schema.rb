@@ -17,10 +17,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_15_203049) do
     t.date "due_date"
     t.string "status", default: "pending", null: false
     t.integer "creator_id", null: false
-    t.integer "assignee_id", null: false
+    t.integer "assignee_id"
+    t.integer "assigner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["assigner_id"], name: "index_tasks_on_assigner_id"
     t.index ["creator_id"], name: "index_tasks_on_creator_id"
     t.index ["due_date"], name: "index_tasks_on_due_date"
     t.index ["status"], name: "index_tasks_on_status"
@@ -41,5 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_15_203049) do
   end
 
   add_foreign_key "tasks", "users", column: "assignee_id"
+  add_foreign_key "tasks", "users", column: "assigner_id"
   add_foreign_key "tasks", "users", column: "creator_id"
 end

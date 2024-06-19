@@ -1,0 +1,12 @@
+.modal.fade#assignModal tabindex="-1" aria-labelledby="assignModalLabel" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      = form_with model: @task do |f|
+        .modal-header
+          h1.modal-title.fs-5#assignModalLabel Assign to user
+          button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
+        .modal-body
+          = f.hidden_field :assigner_id, value: current_user.id
+          = f.collection_select :assignee_id, User.where.not(id: current_user.id).order(:email), :id, :email, {}, class: 'form-select', required: true
+        .modal-footer
+          = f.submit 'Submit', class: 'btn btn-success form-control'
