@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :destroy, :edit, :update]
 
   def index
-    @tasks = Task.where(creator: current_user, assignee: nil, assigner: nil).or(Task.where(assignee: current_user))
+    @grid = ::TasksGrid.new(params[:tasks_grid]) do |scope|
+      scope.where(creator: current_user, assignee: nil, assigner: nil).or(scope.where(assignee: current_user))
+    end
   end
 
   def new
@@ -39,7 +41,9 @@ class TasksController < ApplicationController
   end
 
   def assigned
-    @tasks = current_user.assigned_tasks
+    @grid = ::TasksGrid.new(params[:tasks_grid]) do |scope|
+      scope.where(assigner: current_user)
+    end
   end
 
   private

@@ -1,0 +1,15 @@
+<%= form_for grid, options do |f| -%>
+  <div class='d-flex align-items-end gap-2'>
+    <% grid.filters.each do |filter| %>
+      <div class="datagrid-filter filter">
+        <%= f.datagrid_label filter, class: 'form-label' %>
+        <%= f.datagrid_filter filter, class: 'form-control' %>
+      </div>
+    <% end %>
+    <div class="datagrid-actions d-flex gap-2">
+      <%= f.submit I18n.t("datagrid.form.search").html_safe, class: "datagrid-submit btn btn-success form-control" %>
+      <%# https://github.com/rails/rails/pull/14949 -%>
+      <%= link_to I18n.t('datagrid.form.reset').html_safe, url_for(grid.to_param => {}), class: "datagrid-reset btn btn-secondary form-control" %>
+    </div>
+  </div>
+<% end -%>

@@ -1,4 +1,4 @@
 - provide :actions do
   = link_to 'Create task', new_task_path, class: 'btn btn-primary'
 
-= render 'task_table'
+= render 'tasks_grid', path: tasks_path

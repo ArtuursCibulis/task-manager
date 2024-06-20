@@ -74,3 +74,4 @@ end
 gem "devise", "~> 4.9"
 gem 'slim'
 gem 'show_for'
+gem 'datagrid'
