@@ -6,6 +6,9 @@
     = f.label :description, 'Description', class: 'form-label'
     = f.text_area :description, class: 'form-control'
 
+    = f.label :status, 'Status', class: 'form-label'
+    = f.select :status, ['pending', 'in progress', 'completed'], { required: true }, class: 'form-select'
+
     = f.label :due_date, 'Due date', class: 'form-label'
     = f.date_field :due_date, class: 'form-control'
 
